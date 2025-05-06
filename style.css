@@ -643,6 +643,10 @@ footer {
     .hero-content h2 {
         font-size: 1.4em;
     }
+    
+    .hero-content {
+        margin-bottom: 20px;
+    }
 
     .nav-container {
         flex-direction: column;
@@ -676,6 +680,7 @@ footer {
     .hero-buttons {
         flex-direction: column;
         width: 100%;
+        margin-bottom: 30px;
     }
 
     .btn {
