@@ -12,27 +12,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (themeToggleBtn) {
         // Check for saved theme preference in localStorage
         const currentTheme = localStorage.getItem('theme');
-        if (currentTheme) {
-            document.body.classList.add(currentTheme);
-            // Ensure the correct icon is shown on load
-            if (currentTheme === 'dark-theme') {
-                // If dark theme, moon should be hidden, sun shown
-                // The CSS handles this by default, but this is for clarity
-            }
+        
+        if (currentTheme === 'dark-theme') {
+            document.documentElement.classList.add('dark-theme');
+            document.body.classList.add('dark-theme');
+        } else if (currentTheme === 'light-theme') {
+            // If light theme is explicitly set, ensure dark theme is removed
+            document.documentElement.classList.remove('dark-theme');
+            document.body.classList.remove('dark-theme');
         } else {
             // Set dark theme as the default when no preference exists
+            document.documentElement.classList.add('dark-theme');
             document.body.classList.add('dark-theme');
             localStorage.setItem('theme', 'dark-theme');
         }
 
         themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-theme');
             document.body.classList.toggle('dark-theme');
 
             // Save theme preference
             if (document.body.classList.contains('dark-theme')) {
                 localStorage.setItem('theme', 'dark-theme');
             } else {
-                localStorage.removeItem('theme'); // Or set to 'light-theme'
+                localStorage.setItem('theme', 'light-theme'); // Store light theme preference instead of removing
             }
         });
     }
