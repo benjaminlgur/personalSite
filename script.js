@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggleBtn = document.getElementById('theme-toggle');
     const currentYearSpan = document.getElementById('current-year');
+    const downloadResumeBtn = document.getElementById('download-resume');
 
     // Set current year in footer
     if (currentYearSpan) {
@@ -24,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // For now, let's default to light if nothing is set.
         }
 
-
         themeToggleBtn.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
 
@@ -34,6 +34,26 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 localStorage.removeItem('theme'); // Or set to 'light-theme'
             }
+        });
+    }
+
+    // Download resume functionality (placeholder)
+    if (downloadResumeBtn) {
+        downloadResumeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Resume download functionality would be implemented here. This would typically link to a PDF file.');
+            // In a real implementation, you would set the href to the PDF file:
+            // downloadResumeBtn.href = 'path/to/benjamin-gur-resume.pdf';
+        });
+    }
+
+    // Project card hover effects enhancement
+    const projectCards = document.querySelectorAll('.project-card');
+    if (projectCards.length > 0) {
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+            });
         });
     }
 });
