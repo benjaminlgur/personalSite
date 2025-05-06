@@ -1,0 +1,307 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables for Theming */
+:root {
+    /* Light Theme (Default) */
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+    --heading-color: #1a1a1a;
+    --accent-color: #007bff;
+    /* A nice blue */
+    --accent-hover-color: #0056b3;
+    --section-bg-color: #ffffff;
+    --border-color: #e0e0e0;
+    --icon-color: #555;
+    --link-color: var(--accent-color);
+    --button-bg: #e0e0e0;
+    --button-text: #333;
+}
+
+body.dark-theme {
+    /* Dark Theme */
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --heading-color: #ffffff;
+    --accent-color: #00bcd4;
+    /* A vibrant cyan/teal for dark mode */
+    --accent-hover-color: #008fa1;
+    --section-bg-color: #2c2c2c;
+    --border-color: #444;
+    --icon-color: #bbb;
+    --link-color: var(--accent-color);
+    --button-bg: #333;
+    --button-text: #e0e0e0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding-top: 70px;
+    /* Space for fixed theme switcher */
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Theme Switcher */
+.theme-switcher {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#theme-toggle {
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+#theme-toggle .fa-sun {
+    display: none;
+}
+
+/* Initially hide sun icon */
+body.dark-theme #theme-toggle .fa-moon {
+    display: none;
+}
+
+body.dark-theme #theme-toggle .fa-sun {
+    display: inline-block;
+}
+
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: var(--section-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    color: var(--heading-color);
+    margin-bottom: 10px;
+}
+
+.contact-info {
+    font-size: 0.95em;
+    color: var(--text-color);
+}
+
+.contact-info a {
+    color: var(--link-color);
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+    color: var(--accent-hover-color);
+}
+
+.contact-info i {
+    margin-right: 5px;
+    color: var(--icon-color);
+}
+
+/* Sections */
+section {
+    background-color: var(--section-bg-color);
+    margin-bottom: 30px;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    color: var(--heading-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-color);
+    display: flex;
+    align-items: center;
+}
+
+section h2 i {
+    margin-right: 12px;
+    color: var(--accent-color);
+    font-size: 0.9em;
+}
+
+/* Experience Section */
+.job {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.job:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.job h3 {
+    font-size: 1.3em;
+    color: var(--heading-color);
+    margin-bottom: 5px;
+}
+
+.company-info,
+.degree-info {
+    font-style: italic;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.job ul {
+    list-style: none;
+    /* Changed from disc to none, using ::before for custom bullets */
+    padding-left: 0;
+}
+
+.job ul li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    /* Space for the custom bullet */
+    position: relative;
+}
+
+.job ul li::before {
+    content: '▹';
+    /* Custom bullet character */
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Education Section */
+.education-item h3 {
+    font-size: 1.3em;
+    color: var(--heading-color);
+    margin-bottom: 5px;
+}
+
+/* Skills Section */
+.skill-category {
+    margin-bottom: 15px;
+}
+
+.skill-category h4 {
+    font-size: 1.1em;
+    color: var(--heading-color);
+    margin-bottom: 5px;
+    font-weight: 600;
+    /* Open Sans bold */
+}
+
+.skill-category p {
+    font-size: 0.95em;
+    color: var(--text-color);
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+
+    header h1 {
+        font-size: 2.2em;
+    }
+
+    section h2 {
+        font-size: 1.6em;
+    }
+
+    .job h3,
+    .education-item h3 {
+        font-size: 1.15em;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .contact-info {
+        font-size: 0.9em;
+    }
+
+    .contact-info a {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .contact-info br {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    section h2 {
+        font-size: 1.4em;
+    }
+
+    .theme-switcher {
+        top: 10px;
+        right: 10px;
+    }
+
+    #theme-toggle {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
