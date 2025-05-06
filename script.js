@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // The CSS handles this by default, but this is for clarity
             }
         } else {
-            // Default to light theme if no preference or if system prefers light
-            // You could add prefers-color-scheme detection here if desired
-            // For now, let's default to light if nothing is set.
+            // Set dark theme as the default when no preference exists
+            document.body.classList.add('dark-theme');
+            localStorage.setItem('theme', 'dark-theme');
         }
 
         themeToggleBtn.addEventListener('click', () => {
